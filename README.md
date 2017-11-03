@@ -1,4 +1,4 @@
-.checkout
+CineWorld
 =========
 
-A Symfony project created on November 3, 2017, 10:45 am.
+**Aplicación web** para la gestión de un `videoclub`
