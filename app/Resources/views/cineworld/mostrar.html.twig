@@ -3,5 +3,32 @@
 {% block title 'Videoteca' %}
 
 {% block content %}
+
+    <h1>Peliculas de Diciembre</h1>
+
+    <table border="1px" width=>
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Director</th>
+            <th>Genero</th>
+            <th>Duracion</th>
+            <th>Calidad</th>
+            <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for pelicula in peliculas %}
+        <tr>
+            <td width="200px">{{ pelicula.titulo }}</td>
+            <td width="100px">{{ pelicula.director }}</td>
+            <td width="100px">{{ pelicula.genero }}</td>
+            <td width="100px">{{ pelicula.duracion}}</td>
+            <td width="100px">{{ pelicula.calidad }}</td>
+            <td width="200px"><img src="{{pelicula.imagen }}"/> </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
 {% endblock %}
 
