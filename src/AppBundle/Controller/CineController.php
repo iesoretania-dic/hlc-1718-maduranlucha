@@ -11,7 +11,7 @@ class CineController extends Controller
      * @Route("/cine", name="cinemostrar")
      */
 
-    public function listarAction()
+    public function cineMostrar()
     {
         $peliculas = [
 
