@@ -17,6 +17,69 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Pelicula
 {
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+
+    /**
+     * @param mixed $titulo
+     */
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDirector()
+    {
+        return $this->director;
+    }
+
+    /**
+     * @param mixed $director
+     */
+    public function setDirector($director)
+    {
+        $this->director = $director;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResumen()
+    {
+        return $this->resumen;
+    }
+
+    /**
+     * @param mixed $resumen
+     */
+    public function setResumen($resumen)
+    {
+        $this->resumen = $resumen;
+    }
 
     /**
      * @ORM\Id
