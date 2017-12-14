@@ -20,12 +20,12 @@
     <tbody>
     {% for pelicula in peliculas %}
         <tr>
-            <td width="200px">{{ pelicula.titulo }}</td>
+            <td><a href="{{ path('cinebuscar', {'id': pelicula.id}) }}">{{ pelicula.titulo }}</a></td>
             <td width="100px">{{ pelicula.director }}</td>
             <td width="100px">{{ pelicula.genero }}</td>
             <td width="100px">{{ pelicula.duracion}}</td>
             <td width="100px">{{ pelicula.calidad }}</td>
-            <td width="200px"><img src="{{pelicula.imagen }}"/> </td>
+            <td width="200px"><img src="{{ asset(pelicula.imagen)}}"/></td>
         </tr>
     {% endfor %}
     </tbody>

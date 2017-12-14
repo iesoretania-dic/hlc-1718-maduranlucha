@@ -20,4 +20,15 @@ tr:nth-child(even){
 th{
     height: 50px;
     text-align: center;
+    background-color: #0f0f0f;
+    color: cornsilk;
+}
+
+label strong{
+    color: #122b40;
+}
+
+.imgGrande{
+    width: 400px;
+    margin-top: 20px;
 }

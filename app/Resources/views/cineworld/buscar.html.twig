@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'buscar' %}
+
+{% block content %}
+
+    <div>
+        <label> Título: {{ pelicula.titulo }}</label>
+    </div>
+    <div>
+        <label> Director: {{ pelicula.director }}</label>
+    </div>
+    <div>
+        <label> Género: {{ pelicula.genero }}</label>
+    </div>
+    <div>
+        <label> Duración: {{ pelicula.duracion }}</label>
+    </div>
+    <div>
+        <label> Calidad: {{ pelicula.calidad }}</label>
+    </div>
+    <div>
+        <label> Sinopsis: {{ pelicula.resumen }}</label>
+    </div>
+    <div>
+        <img class="imgGrande" src="{{ asset(pelicula.imagen)}}"/>
+    </div>
+    <a href="{{ path('cinemostrar') }}">Volver</a>
+
+
+
+{% endblock %}
