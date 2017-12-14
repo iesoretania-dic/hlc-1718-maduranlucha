@@ -1,0 +1,9 @@
+AppBundle\Entity\Usuario:
+  usuario_{1..30}:
+    alias (unique): <es_ES:username()>
+    nombre: <es_ES:firstName()> <es_ES:lastName()> <es_ES:lastName()>
+    email: <es_ES:email()>
+    clave: <word()>
+    anonimo: <boolean(10)>
+    registrado: <boolean(10)>
+    moderador: <boolean(10)>
