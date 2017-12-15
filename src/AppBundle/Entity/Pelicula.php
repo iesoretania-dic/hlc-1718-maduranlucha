@@ -7,6 +7,8 @@
  */
 
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -102,6 +104,31 @@ class Pelicula
      * @ORM\Column(type="string")
      */
     private $resumen;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Usuario", inversedBy="alquiler")
+     *
+     *
+     * @var Collection|Usuario[]
+     */
+
+    private $propietario;
+
+    /**
+     * @return Usuario[]|Collection
+     */
+    public function getPropietario()
+    {
+        return $this->propietario;
+    }
+
+    /**
+     * @param Usuario[]|Collection $propietario
+     */
+    public function setPropietario($propietario)
+    {
+        $this->propietario = $propietario;
+    }
 
 
 }

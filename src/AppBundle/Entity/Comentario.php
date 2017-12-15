@@ -81,4 +81,38 @@ class Comentario
      */
     private $fecha;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="comentariosPropuestos")
+     * @ORM\JoinColumn(nullable=false)
+     *
+     * @var Usuario
+     */
+
+    private $autorComentario;
+
+    /**
+     * @return mixed
+     */
+    public function getAutorComentario()
+    {
+        return $this->autorComentario;
+    }
+
+    /**
+     * @param mixed $autorComentario
+     */
+    public function setAutorComentario($autorComentario)
+    {
+        $this->autorComentario = $autorComentario;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAutorComenterio()
+    {
+        return $this->autorComentario;
+    }
+
+
 }

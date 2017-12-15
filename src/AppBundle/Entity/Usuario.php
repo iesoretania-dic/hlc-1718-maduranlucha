@@ -7,6 +7,8 @@
  */
 
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -184,8 +186,59 @@ class Usuario
     private $registrado;
 
     /**
+     * @return Pelicula[]|Collection
+     */
+    public function getAlquiler()
+    {
+        return $this->alquiler;
+    }
+
+    /**
+     * @param Pelicula[]|Collection $alquiler
+     */
+    public function setAlquiler($alquiler)
+    {
+        $this->alquiler = $alquiler;
+    }
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $moderador;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Pelicula", mappedBy="propietario")
+     *
+     *
+     * @var collection|Pelicula[]
+     */
+
+    private $alquiler;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="autorComentario")
+     *
+     * @var Collection|Comentario[]
+     */
+
+    private $comentariosPropuestos;
+
+    /**
+     * @return Comentario[]|Collection
+     */
+    public function getComentariosPropuestos()
+    {
+        return $this->comentariosPropuestos;
+    }
+
+    /**
+     * @param Comentario[]|Collection $comentariosPropuestos
+     */
+    public function setComentariosPropuestos($comentariosPropuestos)
+    {
+        $this->comentariosPropuestos = $comentariosPropuestos;
+    }
+
+
 
 }

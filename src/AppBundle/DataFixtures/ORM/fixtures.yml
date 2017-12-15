@@ -1,5 +1,5 @@
 AppBundle\Entity\Usuario:
-  usuario_{1..30}:
+  usuario_{1..100}:
     alias (unique): <es_ES:username()>
     nombre: <es_ES:firstName()> <es_ES:lastName()> <es_ES:lastName()>
     email: <es_ES:email()>
@@ -7,3 +7,19 @@ AppBundle\Entity\Usuario:
     anonimo: <boolean(10)>
     registrado: <boolean(10)>
     moderador: <boolean(10)>
+    alquiler: '<numberBetween(0, 3)>x @pelicula*'
+
+
+AppBundle\Entity\Pelicula:
+  pelicula_{1..5}:
+    titulo: <sentence()>
+    director: <es_ES:firstName()>
+    resumen: <es_ES:firstName()>
+
+
+AppBundle\Entity\Comentario:
+  Comentario_{1..40}:
+    autorComentario: '@usuario*'
+    contenido: <es_ES:firstName()>
+    fecha: <dateTimeThisYear()>
+
