@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -43,6 +44,31 @@ class CineController extends Controller
             'peliculas' => $peliculas
         ]);
 
+    }
+
+    /**
+     * @Route("/comentarios",name="comentarios")
+     */
+
+    public function listarComentarios()
+    {
+        $comentarios = $this->getDoctrine()->getRepository('AppBundle:Comentario')->findAll();
+        return $this->render('cineworld/comentarios.html.twig',[
+            'comentarios' => $comentarios
+        ]);
+    }
+
+
+    /**
+     * @Route("/comentarios/{id}",name="comentariosusuario")
+     */
+
+    public function listarComentariosUsuario(Usuario $usuario)
+    {
+        return $this->render('cineworld/comentarios_usuarios.html.twig',[
+            'usuario' => $usuario,
+            'peliculas' => $usuario->getComentariosPropuestos()
+        ]);
     }
 
     //FUNCIONES COMPARTIDAS

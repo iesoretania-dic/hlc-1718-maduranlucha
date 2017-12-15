@@ -19,6 +19,7 @@
           <li{% if app.request.attributes.get('_route') == 'inicio' %} class="active"{% endif %}><a href="{{ path('inicio') }}">Inicio</a></li>
           <li{% if app.request.attributes.get('_route') == 'cinemostrar' %} class="active"{% endif %}><a href="{{ path('cinemostrar') }}">Cine</a></li>
           <li{% if app.request.attributes.get('_route') == 'peliculastodas' %} class="active"{% endif %}><a href="{{ path('peliculastodas') }}">Peliculas</a></li>
+          <li{% if app.request.attributes.get('_route') == 'comentarios' %} class="active"{% endif %}><a href="{{ path('comentarios') }}">Comentarios</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

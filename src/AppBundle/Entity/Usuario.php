@@ -255,6 +255,15 @@ class Usuario
         $this->comentariosPropuestos = $comentariosPropuestos;
     }
 
+    public function __construct()
+    {
+        $this->comentariosPropuestos = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 
 
 }

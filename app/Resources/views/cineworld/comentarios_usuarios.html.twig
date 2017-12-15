@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'peliculas de:'  %}
+
+{% block content %}
+
+    <h1>Catalogo de películas de</h1>
+
+    <table border="1px" width=>
+        <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Contenido</th>
+            <th>Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pelicula in peliculas %}
+            <tr>
+                <td width="100px">{{ pelicula.autorComentario }}</td>
+                <td width="100px">{{ pelicula.contenido }}</td>
+                <td width="100px">{{ pelicula.fecha|date('Y/m/d')}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
