@@ -105,30 +105,4 @@ class Pelicula
      */
     private $resumen;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Usuario", inversedBy="alquiler")
-     *
-     *
-     * @var Collection|Usuario[]
-     */
-
-    private $propietario;
-
-    /**
-     * @return Usuario[]|Collection
-     */
-    public function getPropietario()
-    {
-        return $this->propietario;
-    }
-
-    /**
-     * @param Usuario[]|Collection $propietario
-     */
-    public function setPropietario($propietario)
-    {
-        $this->propietario = $propietario;
-    }
-
-
 }

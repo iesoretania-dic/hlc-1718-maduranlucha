@@ -207,13 +207,29 @@ class Usuario
     private $moderador;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Pelicula", mappedBy="propietario")
+     * @ORM\ManyToMany(targetEntity="Pelicula")
      *
      *
      * @var collection|Pelicula[]
      */
 
-    private $alquiler;
+    private $peliculas;
+
+    /**
+     * @return Pelicula[]|Collection
+     */
+    public function getPeliculas()
+    {
+        return $this->peliculas;
+    }
+
+    /**
+     * @param Pelicula[]|Collection $peliculas
+     */
+    public function setPeliculas($peliculas)
+    {
+        $this->peliculas = $peliculas;
+    }
 
     /**
      * @ORM\OneToMany(targetEntity="Comentario", mappedBy="autorComentario")

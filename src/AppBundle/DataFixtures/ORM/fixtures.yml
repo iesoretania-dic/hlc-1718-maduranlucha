@@ -7,7 +7,7 @@ AppBundle\Entity\Usuario:
     anonimo: <boolean(10)>
     registrado: <boolean(10)>
     moderador: <boolean(10)>
-    alquiler: '<numberBetween(0, 3)>x @pelicula*'
+    peliculas: '<numberBetween(0, 3)>x @pelicula*'
 
 
 AppBundle\Entity\Pelicula:
