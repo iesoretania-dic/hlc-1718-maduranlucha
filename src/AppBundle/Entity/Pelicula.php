@@ -101,7 +101,7 @@ class Pelicula
     private $director;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $resumen;
 
