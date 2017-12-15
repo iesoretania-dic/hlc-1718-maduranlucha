@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Peliculas disponibles' %}
+
+{% block content %}
+
+    <h1>Catalogo de películas</h1>
+
+    <table border="1px" width=>
+        <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Director</th>
+            <th>Resumen</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pelicula in peliculas %}
+            <tr>
+                <td width="100px">{{ pelicula.titulo }}</td>
+                <td width="100px">{{ pelicula.director }}</td>
+                <td width="100px">{{ pelicula.resumen}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

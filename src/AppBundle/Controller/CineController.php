@@ -32,6 +32,19 @@ class CineController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/peliculas",name="peliculastodas")
+     */
+
+    public function listarPeliculas()
+    {
+        $peliculas = $this->getDoctrine()->getRepository('AppBundle:Pelicula')->findAll();
+        return $this->render('cineworld/peliculas.html.twig',[
+            'peliculas' => $peliculas
+        ]);
+
+    }
+
     //FUNCIONES COMPARTIDAS
 
     private function mostrarPeliculas()
