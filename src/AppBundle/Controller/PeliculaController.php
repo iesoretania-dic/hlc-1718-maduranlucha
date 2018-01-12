@@ -6,7 +6,7 @@ use AppBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CineController extends Controller
+class PeliculaController extends Controller
 {
     /**
      * @Route("/cine", name="cinemostrar")
