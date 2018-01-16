@@ -265,5 +265,10 @@ class Usuario
         return $this->getNombre();
     }
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $edad;
+
 
 }
