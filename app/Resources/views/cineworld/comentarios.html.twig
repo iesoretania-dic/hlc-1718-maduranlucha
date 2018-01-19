@@ -17,9 +17,9 @@
         <tbody>
         {% for comentario in comentarios %}
             <tr>
-                <td width="100px">{{ comentario.autorComenterio}}</td>
+                <td width="100px">{{ comentario.autorComentario}}</td>
                 <td width="100px">{{ comentario.contenido }}</td>
-                <td width="100px">{{ comentario.fecha|date('Y/m/d')}}</td>u
+                <td width="100px">{{ comentario.fecha|date('Y/m/d')}}</td>
             </tr>
         {% endfor %}
         </tbody>

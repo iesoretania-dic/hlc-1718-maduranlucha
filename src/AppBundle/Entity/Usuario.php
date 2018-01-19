@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: miguel
- * Date: 14/12/17
- * Time: 11:05
- */
 
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -46,6 +40,45 @@ class Usuario
      * @ORM\Column(type="string")
      */
     private $clave;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $anonimo;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $registrado;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $moderador;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Pelicula")
+     *
+     *
+     * @var collection|Pelicula[]
+     */
+
+    private $peliculas;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="autorComentario")
+     *
+     * @var Collection|Comentario[]
+     */
+
+    private $comentariosPropuestos;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $edad;
+
+//    Getters and Setters
 
     /**
      * @return mixed
@@ -175,69 +208,6 @@ class Usuario
         $this->moderador = $moderador;
     }
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $anonimo;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $registrado;
-
-    /**
-     * @return Pelicula[]|Collection
-     */
-    public function getAlquiler()
-    {
-        return $this->alquiler;
-    }
-
-    /**
-     * @param Pelicula[]|Collection $alquiler
-     */
-    public function setAlquiler($alquiler)
-    {
-        $this->alquiler = $alquiler;
-    }
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $moderador;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Pelicula")
-     *
-     *
-     * @var collection|Pelicula[]
-     */
-
-    private $peliculas;
-
-    /**
-     * @return Pelicula[]|Collection
-     */
-    public function getPeliculas()
-    {
-        return $this->peliculas;
-    }
-
-    /**
-     * @param Pelicula[]|Collection $peliculas
-     */
-    public function setPeliculas($peliculas)
-    {
-        $this->peliculas = $peliculas;
-    }
-
-    /**
-     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="autorComentario")
-     *
-     * @var Collection|Comentario[]
-     */
-
-    private $comentariosPropuestos;
 
     /**
      * @return Comentario[]|Collection
@@ -266,9 +236,35 @@ class Usuario
     }
 
     /**
-     * @ORM\Column(type="string")
+     * @return Pelicula[]|Collection
      */
-    private $edad;
+    public function getPeliculas()
+    {
+        return $this->peliculas;
+    }
 
+    /**
+     * @param Pelicula[]|Collection $peliculas
+     */
+    public function setPeliculas($peliculas)
+    {
+        $this->peliculas = $peliculas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEdad()
+    {
+        return $this->edad;
+    }
+
+    /**
+     * @param mixed $edad
+     */
+    public function setEdad($edad)
+    {
+        $this->edad = $edad;
+    }
 
 }

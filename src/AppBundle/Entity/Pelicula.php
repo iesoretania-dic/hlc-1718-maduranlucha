@@ -19,6 +19,31 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Pelicula
 {
+
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $titulo;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $director;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $resumen;
+
+//    Getters and Setters
+
     /**
      * @return mixed
      */
@@ -83,26 +108,6 @@ class Pelicula
         $this->resumen = $resumen;
     }
 
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $titulo;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $director;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $resumen;
 
 }

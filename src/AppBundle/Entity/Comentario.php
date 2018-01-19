@@ -17,6 +17,51 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comentario
 {
+
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $contenido;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $fecha;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="comentariosPropuestos")
+     * @ORM\JoinColumn(nullable=false)
+     *
+     * @var Usuario
+     */
+
+    private $autorComentario;
+
+//    Getters and Setters
+
+    /**
+     * @return mixed
+     */
+    public function getAutorComentario()
+    {
+        return $this->autorComentario;
+    }
+
+    /**
+     * @param mixed $autorComentario
+     */
+    public function setAutorComentario($autorComentario)
+    {
+        $this->autorComentario = $autorComentario;
+    }
+
     /**
      * @return mixed
      */
@@ -63,55 +108,6 @@ class Comentario
     public function setFecha($fecha)
     {
         $this->fecha = $fecha;
-    }
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $contenido;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $fecha;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="comentariosPropuestos")
-     * @ORM\JoinColumn(nullable=false)
-     *
-     * @var Usuario
-     */
-
-    private $autorComentario;
-
-    /**
-     * @return mixed
-     */
-    public function getAutorComentario()
-    {
-        return $this->autorComentario;
-    }
-
-    /**
-     * @param mixed $autorComentario
-     */
-    public function setAutorComentario($autorComentario)
-    {
-        $this->autorComentario = $autorComentario;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAutorComenterio()
-    {
-        return $this->autorComentario;
     }
 
 
