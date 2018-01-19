@@ -58,8 +58,6 @@ class Usuario
 
     /**
      * @ORM\ManyToMany(targetEntity="Pelicula")
-     *
-     *
      * @var collection|Pelicula[]
      */
 
@@ -72,11 +70,6 @@ class Usuario
      */
 
     private $comentariosPropuestos;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $edad;
 
 //    Getters and Setters
 
@@ -251,20 +244,5 @@ class Usuario
         $this->peliculas = $peliculas;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEdad()
-    {
-        return $this->edad;
-    }
-
-    /**
-     * @param mixed $edad
-     */
-    public function setEdad($edad)
-    {
-        $this->edad = $edad;
-    }
 
 }
