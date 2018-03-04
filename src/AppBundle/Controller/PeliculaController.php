@@ -4,8 +4,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Pelicula;
 use AppBundle\Entity\Usuario;
+use AppBundle\Form\Type\PeliculaType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class PeliculaController extends Controller
 {
@@ -76,10 +78,26 @@ class PeliculaController extends Controller
      * @Route("/pelicula/{id}", name="pelicula")
      */
 
-    public function peliculaSelect(Pelicula $id)
+    public function peliculaSelect(Request $request, Pelicula $id)
     {
-        return $this->render(':cineworld:pelicula.html.twig',[
-            'pelicula' => $id
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(PeliculaType::class, $id);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->flush();
+                return $this->redirectToRoute('peliculastodas');
+            }
+            catch (\Exception $e) {
+                $this->addFlash('error', 'No se han podido guardar los cambios');
+            }
+        }
+        return $this->render(':cineworld:form.html.twig',[
+            'pelicula' => $id,
+            'formulario' => $form->createView()
         ]);
     }
 
