@@ -42,6 +42,14 @@ class Pelicula
      */
     private $resumen;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Genero")
+     * @var collection|Genero[]
+     */
+
+    private $generos;
+
 //    Getters and Setters
 
     /**
@@ -106,6 +114,22 @@ class Pelicula
     public function setResumen($resumen)
     {
         $this->resumen = $resumen;
+    }
+
+    /**
+     * @return Genero[]|Collection
+     */
+    public function getGeneros()
+    {
+        return $this->generos;
+    }
+
+    /**
+     * @param Genero[]|Collection $generos
+     */
+    public function setGeneros($generos)
+    {
+        $this->generos = $generos;
     }
 
 
