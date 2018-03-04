@@ -27,3 +27,9 @@ AppBundle\Entity\Comentario:
 AppBundle\Entity\Genero:
   genero_{1..10}:
     nombre: <sentence()>
+
+AppBundle\Entity\Trailer:
+  trailer_{1..20}:
+    duracion: <numberBetween(2,8)>
+    idioma: <sentence()>
+    peliculaTrailer: '@pelicula*'

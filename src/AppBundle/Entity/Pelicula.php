@@ -50,6 +50,15 @@ class Pelicula
 
     private $generos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Trailer", mappedBy="peliculaTrailer")
+     *
+     * @var Collection|Trailer[]
+     */
+
+    private $trailers;
+
+
 //    Getters and Setters
 
     /**
@@ -130,6 +139,22 @@ class Pelicula
     public function setGeneros($generos)
     {
         $this->generos = $generos;
+    }
+
+    /**
+     * @return Trailer[]|Collection
+     */
+    public function getTrailers()
+    {
+        return $this->trailers;
+    }
+
+    /**
+     * @param Trailer[]|Collection $trailers
+     */
+    public function setTrailers($trailers)
+    {
+        $this->trailers = $trailers;
     }
 
 
