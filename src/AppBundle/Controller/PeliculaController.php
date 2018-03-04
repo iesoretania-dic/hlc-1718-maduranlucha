@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Pelicula;
 use AppBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -68,6 +69,17 @@ class PeliculaController extends Controller
         return $this->render('cineworld/comentarios_usuarios.html.twig',[
             'usuario' => $usuario,
             'peliculas' => $usuario->getComentariosPropuestos()
+        ]);
+    }
+
+    /**
+     * @Route("/pelicula/{id}", name="pelicula")
+     */
+
+    public function peliculaSelect(Pelicula $id)
+    {
+        return $this->render(':cineworld:pelicula.html.twig',[
+            'pelicula' => $id
         ]);
     }
 
