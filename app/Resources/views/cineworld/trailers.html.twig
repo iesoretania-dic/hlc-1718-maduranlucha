@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'trailers' %}
+
+{% block content %}
+
+    <h1>Lista de Trailers</h1>
+
+    <p>
+        {#<a href="{{ path('trailer+') }}" class="btn btn-success">Añadir Película</a>#}
+    </p>
+    <table border="1px" width=>
+        <thead>
+        <tr>
+            <th>Titulo</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for trailer in trailerss %}
+            <tr>
+                <td><a href="{{ path('trailer', {'id': trailer.id}) }}">{{ trailer.nombre}}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

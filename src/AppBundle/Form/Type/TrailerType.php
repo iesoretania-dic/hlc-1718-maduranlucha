@@ -2,11 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: miguel
- * Date: 4/03/18
- * Time: 4:32
+ * Date: 5/03/18
+ * Time: 3:07
  */
 
 namespace AppBundle\Form\Type;
+
 
 use AppBundle\Entity\Pelicula;
 use AppBundle\Entity\Trailer;
@@ -16,38 +17,40 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PeliculaType extends AbstractType
+class TrailerType  extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titulo', null,[
+            ->add('nombre', null,[
                 'label' => 'Titulo',
                 'required' => true
             ])
-            ->add('director' ,null,[
-                'label' => 'Director',
+            ->add('duracion' ,null,[
+                'label' => 'Duracion',
                 'required' => true
             ])
-            ->add('resumen',null,[
-                'label' => 'Resumen',
+            ->add('idioma',null,[
+                'label' => 'Idioma',
                 'required' => true
             ])
-            ->add('trailers',null,[
-                'label' => 'Trailers',
-                'required' => true
-            ])
-            ->add('generos', null, [
-                'label' => 'Generos',
-                'expanded' => true,
-                'required' => false
+            ->add('peliculaTrailer', EntityType::class, [
+                'class' => Pelicula::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.titulo', 'ASC');
+                },
+                'label' => 'Pelicula:'
             ]);
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Pelicula::class,
+            'data_class' => Trailer::class,
         ]);
     }
 

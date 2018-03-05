@@ -58,6 +58,11 @@ class Pelicula
 
     private $trailers;
 
+    public function __toString()
+    {
+        return $this->getDirector();
+    }
+
 
 //    Getters and Setters
 

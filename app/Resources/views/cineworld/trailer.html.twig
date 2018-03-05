@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block title  %}
+    Detalle:  {{ trailer.nombre }}
+{% endblock %}
+
+{% block content %}
+
+    <h1><span style="color: blue">Nombre:</span> {{ trailer.nombre }}</h1>
+    <h1><span style="color: blue">Duracion:</span> {{ trailer.duracion }}</h1>
+    <h1><p style="color: blue">Idioma: </p> {{ trailer.idioma}}</h1>
+
+    <a class="btn btn-primary" href="{{ path('trailers') }}">Volver</a>
+
+{% endblock %}

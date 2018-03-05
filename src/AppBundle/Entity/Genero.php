@@ -31,6 +31,15 @@ class Genero
 
     private $nombre;
 
+    // Convertir a cadena
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+
+
+//    Getters and Setters
     /**
      * @return mixed
      */
@@ -63,7 +72,7 @@ class Genero
         $this->nombre = $nombre;
     }
 
-//    Getters and Setters
+
 
 
 

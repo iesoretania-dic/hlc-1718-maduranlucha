@@ -26,6 +26,11 @@ class Trailer
     private $id;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $nombre;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $duracion;
@@ -39,10 +44,15 @@ class Trailer
      * @ORM\ManyToOne(targetEntity="Pelicula", inversedBy="trailers")
      * @ORM\JoinColumn(nullable=false)
      *
-     * @var Usuario
+     * @var Pelicula
      */
 
     private $peliculaTrailer;
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 
     //    Getters and Setters
 
@@ -95,7 +105,7 @@ class Trailer
     }
 
     /**
-     * @return Usuario
+     * @return Pelicula
      */
     public function getPeliculaTrailer()
     {
@@ -103,11 +113,29 @@ class Trailer
     }
 
     /**
-     * @param Usuario $peliculaTrailer
+     * @param Pelicula $peliculaTrailer
      */
     public function setPeliculaTrailer($peliculaTrailer)
     {
         $this->peliculaTrailer = $peliculaTrailer;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
     }
 
 

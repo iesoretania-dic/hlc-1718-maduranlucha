@@ -3,8 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Pelicula;
+use AppBundle\Entity\Trailer;
 use AppBundle\Entity\Usuario;
 use AppBundle\Form\Type\PeliculaType;
+use AppBundle\Form\Type\TrailerType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -97,6 +99,81 @@ class PeliculaController extends Controller
         }
         return $this->render(':cineworld:form.html.twig',[
             'pelicula' => $id,
+            'formulario' => $form->createView()
+        ]);
+    }
+
+    //Nueva Pelicula
+
+    /**
+     * @Route("/Pelicula/nueva", name="pelicula+")
+     */
+    public function nuevaAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $pelicula = new Pelicula();
+        $em->persist($pelicula);
+
+        $form = $this->createForm(PeliculaType::class,$pelicula);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->flush();
+                return $this->redirectToRoute('peliculastodas');
+            }
+            catch (\Exception $e) {
+                $this->addFlash('error', 'Error al guardar los cambios');
+            }
+        }
+
+        return $this->render('cineworld/form.html.twig', [
+            'pelicula' => $pelicula,
+            'formulario' => $form->createView()
+        ]);
+    }
+
+    //TRAILERS
+
+
+    /**
+     * @Route("/trailers",name="trailers")
+     */
+
+    public function listarTrailers()
+    {
+        $trailerss = $this->getDoctrine()->getRepository('AppBundle:Trailer')->findAll();
+        return $this->render('cineworld/trailers.html.twig',[
+            'trailerss' => $trailerss
+        ]);
+
+    }
+
+    /**
+     * @Route("/Trailer/{id}", name="trailer")
+     */
+
+    public function trailerSelect(Request $request, Trailer $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(TrailerType::class, $id);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->flush();
+                return $this->redirectToRoute('trailers');
+            }
+            catch (\Exception $e) {
+                $this->addFlash('error', 'No se han podido guardar los cambios');
+            }
+        }
+        return $this->render(':cineworld:formTrailer.html.twig',[
+            'trailer' => $id,
             'formulario' => $form->createView()
         ]);
     }
