@@ -19,6 +19,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-10">
             <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar</button>
+            {% if pelicula.id %}<a href="{{ path('peliculaEliminar', {'id': pelicula.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>{% endif %}
             <a href="{{ path('peliculastodas') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver a las peliculas</a>
         </div>
     </div>

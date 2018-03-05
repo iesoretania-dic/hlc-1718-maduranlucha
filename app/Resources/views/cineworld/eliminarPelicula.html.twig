@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Detalle: {{ pelicula.titulo }}
+{% endblock %}
+
+{% block content %}
+    {% for mensaje in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ mensaje }}
+        </div>
+    {% endfor %}
+    <h1>{{ pelicula.titulo }}</h1>
+
+    <div class="alert alert-warning">
+        ¿Está seguro de que desea eliminar la pelicula?.
+    </div>
+    <form method="post">
+        <a href="{{ path('peliculastodas') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver</a>
+        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+    </form>
+
+{% endblock %}
