@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,21 +28,26 @@ class Usuario
     private $alias;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5)
      * @ORM\Column(type="string")
      */
     private $nombre;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $email;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $clave;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="boolean")
      */
     private $anonimo;

@@ -9,7 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ORM\Table(name="trailer")
@@ -26,16 +26,27 @@ class Trailer
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(min=6)
      * @ORM\Column(type="string")
      */
     private $nombre;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Range(
+     *      min = 2,
+     *      max = 8,
+     *      minMessage = "La duracion mínima es 2",
+     *      maxMessage = "La duracion máxima es 8"
+     * )
      * @ORM\Column(type="integer")
      */
     private $duracion;
 
     /**
+     * @Assert\Length(min=6)
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $idioma;

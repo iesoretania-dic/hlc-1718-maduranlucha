@@ -7,7 +7,7 @@
  */
 
 namespace AppBundle\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +26,8 @@ class Genero
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5)
      * @ORM\Column(type="string")
      */
 

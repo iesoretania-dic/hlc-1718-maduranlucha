@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +29,8 @@ class Pelicula
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5)
      * @ORM\Column(type="string")
      */
     private $titulo;
