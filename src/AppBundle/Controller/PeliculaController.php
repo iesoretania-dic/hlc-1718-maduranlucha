@@ -240,6 +240,32 @@ class PeliculaController extends Controller
         ]);
     }
 
+    //ELIMINAR TRAILER
+
+    /**
+     * @Route("/Trailer/eliminar/{id}", name="trailerEliminar")
+     */
+    public function eliminarAction2(Request $request, Trailer $trailer)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if ($request->isMethod('POST')) {
+            try {
+
+                $em->remove($trailer);
+                $em->flush();
+                return $this->redirectToRoute('trailers');
+            }
+            catch (\Exception $e) {
+                $this->addFlash('error', 'No se ha podido eliminar');
+            }
+        }
+
+        return $this->render(':cineworld:eliminarTrailer.html.twig', [
+            'trailer' => $trailer
+        ]);
+    }
+
     //FUNCIONES COMPARTIDAS
 
     private function mostrarPeliculas()

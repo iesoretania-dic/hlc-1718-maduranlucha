@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Detalle: {{ trailer.nombre }}
+{% endblock %}
+
+{% block content %}
+    {% for mensaje in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ mensaje }}
+        </div>
+    {% endfor %}
+    <h1>{{ trailer.nombre }}</h1>
+
+    <div class="alert alert-warning">
+        ¿Está seguro de que desea eliminar el trailer?.
+    </div>
+    <form method="post">
+        <a href="{{ path('trailers') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver</a>
+        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+    </form>
+
+{% endblock %}
