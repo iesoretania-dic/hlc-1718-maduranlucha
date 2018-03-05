@@ -178,6 +178,38 @@ class PeliculaController extends Controller
         ]);
     }
 
+    //TRAILER+
+
+    /**
+     * @Route("/Trailers/nuevo", name="trailermas")
+     */
+    public function trailerNu(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $trailer = new Trailer();
+        $em->persist($trailer);
+
+        $form = $this->createForm(TrailerType::class,$trailer);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->flush();
+                return $this->redirectToRoute('trailers');
+            }
+            catch (\Exception $e) {
+                $this->addFlash('error', 'Error al guardar los cambios');
+            }
+        }
+
+        return $this->render(':cineworld:formTrailer.html.twig', [
+            'trailer' => $trailer,
+            'formulario' => $form->createView()
+        ]);
+    }
+
     //FUNCIONES COMPARTIDAS
 
     private function mostrarPeliculas()
