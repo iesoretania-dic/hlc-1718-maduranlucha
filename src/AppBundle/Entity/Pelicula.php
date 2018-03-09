@@ -63,7 +63,7 @@ class Pelicula
 
     public function __toString()
     {
-        return $this->getDirector();
+        return $this->getTitulo();
     }
 
 
