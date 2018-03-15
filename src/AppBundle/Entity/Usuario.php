@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -12,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="usuario")
  */
-class Usuario
+class Usuario implements UserInterface
 {
 
     /**
@@ -45,6 +46,12 @@ class Usuario
      * @ORM\Column(type="string")
      */
     private $clave;
+
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(type="boolean")
+     */
+    private $administrador;
 
     /**
      * @Assert\NotBlank()
@@ -248,6 +255,67 @@ class Usuario
     public function setPeliculas($peliculas)
     {
         $this->peliculas = $peliculas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrador()
+    {
+        return $this->administrador;
+    }
+
+    /**
+     * @param mixed $administrador
+     */
+    public function setAdministrador($administrador)
+    {
+        $this->administrador = $administrador;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdministrador()
+    {
+        return $this->administrador;
+    }
+
+    // Metodos de interface
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+        $roles = ['ROLE_USER'];
+
+        if ($this->isAdministrador()) {
+            $roles[] = 'ROLE_ADMIN';
+        }
+
+        return $roles;
+    }
+
+    public function getPassword()
+    {
+        // TODO: Implement getPassword() method.
+        return $this->getClave();
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+        return $this->getNombre();
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
     }
 
 

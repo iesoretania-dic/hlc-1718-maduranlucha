@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Logeo' %}
+
+{% block body %}
+
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+
+    <div class="container">
+        <form action="{{ path('pagina_logeo') }}" method="post">
+            <input type="text" name="_username" value="{{ ultimo_usuario }}" placeholder="USUARIO"><br/>
+            <input type="password" name="_password" placeholder="CONTRASEÑA"><br/>
+            <button type="submit">ACCEDER</button>
+        </form>
+    </div>
+{% endblock %}

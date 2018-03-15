@@ -1,9 +1,20 @@
 AppBundle\Entity\Usuario:
+  admin:
+    alias: admin
+    nombre: admin
+    email: admin@admin.es
+    clave: admin
+    administrador: true
+    anonimo: false
+    registrado: true
+    moderador: true
+    peliculas: '<numberBetween(0, 0)>x @pelicula*'
   usuario_{1..100}:
     alias (unique): <es_ES:username()>
     nombre: <es_ES:firstName()> <es_ES:lastName()> <es_ES:lastName()>
     email: <es_ES:email()>
     clave: <word()>
+    administrador: <boolean(10)>
     anonimo: <boolean(10)>
     registrado: <boolean(10)>
     moderador: <boolean(10)>
@@ -11,7 +22,7 @@ AppBundle\Entity\Usuario:
 
 
 AppBundle\Entity\Pelicula:
-  pelicula_{1..500}:
+  pelicula_{1..50}:
     titulo: <sentence()>
     director: <firstName()>
     resumen: <paragraph()>
