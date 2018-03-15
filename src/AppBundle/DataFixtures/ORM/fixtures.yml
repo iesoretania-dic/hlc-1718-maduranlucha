@@ -1,4 +1,34 @@
 AppBundle\Entity\Usuario:
+  pepa:
+    alias: pepa
+    nombre: pepa
+    email: pepa@admin.es
+    clave: pepa
+    administrador: false
+    anonimo: false
+    registrado: true
+    moderador: false
+    peliculas: '<numberBetween(0, 0)>x @pelicula*'
+  paco:
+    alias: paco
+    nombre: paco
+    email: paco@admin.es
+    clave: paco
+    administrador: false
+    anonimo: false
+    registrado: true
+    moderador: false
+    peliculas: '<numberBetween(0, 0)>x @pelicula*'
+  pepe:
+    alias: pepe
+    nombre: pepe
+    email: pepe@admin.es
+    clave: pepe
+    administrador: false
+    anonimo: false
+    registrado: true
+    moderador: true
+    peliculas: '<numberBetween(0, 0)>x @pelicula*'
   admin:
     alias: admin
     nombre: admin
@@ -16,7 +46,7 @@ AppBundle\Entity\Usuario:
     clave: <word()>
     administrador: <boolean(10)>
     anonimo: <boolean(10)>
-    registrado: <boolean(10)>
+    registrado: true
     moderador: <boolean(10)>
     peliculas: '<numberBetween(0, 3)>x @pelicula*'
 

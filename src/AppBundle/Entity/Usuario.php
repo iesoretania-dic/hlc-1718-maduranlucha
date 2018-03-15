@@ -199,6 +199,14 @@ class Usuario implements UserInterface
     }
 
     /**
+     * @return bool
+     */
+    public function isRegistrado()
+    {
+        return $this->registrado;
+    }
+
+    /**
      * @return mixed
      */
     public function getModerador()
@@ -212,6 +220,14 @@ class Usuario implements UserInterface
     public function setModerador($moderador)
     {
         $this->moderador = $moderador;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isModerador()
+    {
+        return $this->moderador;
     }
 
 
@@ -290,6 +306,14 @@ class Usuario implements UserInterface
 
         if ($this->isAdministrador()) {
             $roles[] = 'ROLE_ADMIN';
+        }
+
+        if ($this->isModerador()) {
+            $roles[] = 'ROLE_MODERADOR';
+        }
+
+        if ($this->isRegistrado()) {
+            $roles[] = 'ROLE_REGISTRADO';
         }
 
         return $roles;

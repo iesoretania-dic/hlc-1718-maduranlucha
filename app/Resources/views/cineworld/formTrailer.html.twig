@@ -11,19 +11,29 @@
             {{ mensaje }}
         </div>
     {% endfor %}
-    <h1>{{ trailer.id ? trailer.nombre : 'Nueva' }}</h1>
-    {{ form_start(formulario) }}
-    {{ form_widget(formulario) }}
 
-    <div class="form-group">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar</button>
-            {% if trailer.id %}<a href="{{ path('trailerEliminar', {'id': trailer.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>{% endif %}
-            <a href="{{ path('trailers') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver</a>
+
+    {% if is_granted('TRAILER_VER', trailer) %}
+
+        <h1>{{ trailer.id ? trailer.nombre : 'Nueva' }}</h1>
+        {{ form_start(formulario) }}
+        {{ form_widget(formulario) }}
+
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                {% if is_granted('TRAILER_MODIFICAR', trailer) %}
+                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar</button>
+                {% endif %}
+                {% if is_granted('TRAILER_ELIMINAR', trailer) %}
+                    {% if trailer.id %}<a href="{{ path('trailerEliminar', {'id': trailer.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>{% endif %}
+                {% endif %}
+                <a href="{{ path('trailers') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver</a>
+            </div>
         </div>
-    </div>
-
-    {{ form_end(formulario) }}
-
+        {{ form_end(formulario) }}
+    {% else %}
+        <h1>Solo los usuarios registrados pueden ver los trailers</h1>
+        <a href="{{ path('trailers') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver</a>
+    {% endif %}
 {% endblock %}
