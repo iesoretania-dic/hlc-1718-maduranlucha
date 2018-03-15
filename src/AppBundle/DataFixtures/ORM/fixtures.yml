@@ -3,7 +3,7 @@ AppBundle\Entity\Usuario:
     alias: pepa
     nombre: pepa
     email: pepa@admin.es
-    clave: pepa
+    clave: <codificaPassword('pepa')>
     administrador: false
     anonimo: false
     registrado: true
@@ -13,7 +13,7 @@ AppBundle\Entity\Usuario:
     alias: paco
     nombre: paco
     email: paco@admin.es
-    clave: paco
+    clave: <codificaPassword('paco')>
     administrador: false
     anonimo: false
     registrado: true
@@ -23,7 +23,7 @@ AppBundle\Entity\Usuario:
     alias: pepe
     nombre: pepe
     email: pepe@admin.es
-    clave: pepe
+    clave: <codificaPassword('pepe')>
     administrador: false
     anonimo: false
     registrado: true
@@ -33,7 +33,7 @@ AppBundle\Entity\Usuario:
     alias: admin
     nombre: admin
     email: admin@admin.es
-    clave: admin
+    clave: <codificaPassword('admin')>
     administrador: true
     anonimo: false
     registrado: true
@@ -43,7 +43,7 @@ AppBundle\Entity\Usuario:
     alias (unique): <es_ES:username()>
     nombre: <es_ES:firstName()> <es_ES:lastName()> <es_ES:lastName()>
     email: <es_ES:email()>
-    clave: <word()>
+    clave: <codificaPassword('usuario')>
     administrador: <boolean(10)>
     anonimo: <boolean(10)>
     registrado: true

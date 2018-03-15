@@ -1,25 +1,36 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: miguel
- * Date: 14/12/17
- * Time: 13:59
- */
+
 
 namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Nelmio\Alice\Fixtures;
+use AppBundle\Entity\Usuario;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
-
-
-class LoadUsuariosData implements FixtureInterface
+class LoadUsuariosData extends Fixture
 
 {
+    private $userPasswordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder)
+    {
+        $this->userPasswordEncoder = $userPasswordEncoder;
+    }
+
     public function load(ObjectManager $manager)
     {
-        Fixtures::load(__DIR__.'/fixtures.yml',$manager);
+        Fixtures::load(__DIR__.'/fixtures.yml',$manager,
+        [
+            'providers' => [$this]
+        ]);
+    }
+
+    public function codificaPassword($textoPlano)
+    {
+        return $this->userPasswordEncoder->encodePassword(new Usuario(), $textoPlano);
     }
 }
